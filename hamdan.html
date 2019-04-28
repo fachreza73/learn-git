@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+		background: #cacaca;
+		margin: 0;
+		padding: 20px;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	   	font-weight: 300;
+	}
+
+	#table {
+		display: table;
+	 	
+	 	width: 100%; 
+	 	background: #fff;
+	 	margin: 0;
+	 	box-sizing: border-box;
+
+	 }
+
+	 .caption {
+	 	display: block;
+	 	width: 100%;
+	 	background: #64e0ef;
+	 	height: 55px;
+	 	padding-left: 10px;
+	 	color: #fff;
+	 	font-size: 20px;
+	 	line-height: 55px;
+	 	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	 	box-sizing: border-box;
+	 }
+
+
+	 .header-row {
+	 	background: #8b8b8b;
+	 	color: #fff;
+
+	 }
+
+	.row {
+		display: table-row;
+	}
+
+	.cell {
+		display: table-cell;
+		
+		padding: 6px; 
+		border-bottom: 1px solid #e5e5e5;
+		text-align: center;
+	}
+
+	.primary {
+		text-align: left;
+	}
+
+
+	input[type="radio"],
+	input[type="checkbox"]{
+		display: none;
+	}
+
+
+	@media only screen and (max-width: 760px)  {
+
+		body {
+			padding: 0;
+		}
+
+		#table {
+			display: block;
+			margin: 44px 0 0 0;
+		}
+
+		.caption {
+			position: fixed;
+			top: 0;
+			text-align: center;
+			height: 44px;
+			line-height: 44px;
+			z-index: 5;
+			border-bottom: 2px solid #999;
+		}
+
+		.row { 
+			position: relative;
+			display: block;
+			border-bottom: 1px solid #ccc; 
+
+		}
+
+		.header-row {
+			display: none;
+		}
+		
+		.cell { 
+			display: block;
+
+			border: none;
+			position: relative;
+			height: 45px;
+			line-height: 45px;
+			text-align: left;
+		}
+
+		.primary:after {
+			content: "";
+			display: block;
+			position: absolute;
+			right:20px;
+			top:18px;
+			z-index: 2;
+			width: 0; 
+			height: 0; 
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent; 
+			border-right:10px solid #ccc;
+
+		}
+
+		.cell:nth-of-type(n+2) { 
+			display: none; 
+		}
+
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			width: 99%;
+			height: 100%;
+			opacity: 0;
+		}
+    
+    input[type="radio"]:checked,
+		input[type="checkbox"]:checked {
+		  z-index: -1;
+		}
+
+		input[type="radio"]:checked ~ .cell,
+		input[type="checkbox"]:checked ~ .cell {
+			display: block;
+
+			border-bottom: 1px solid #eee; 
+		}
+
+		input[type="radio"]:checked ~ .cell:nth-of-type(n+2),
+		input[type="checkbox"]:checked ~ .cell:nth-of-type(n+2) {
+			
+			background: #e0e0e0;
+		}
+
+		input[type="radio"]:checked ~ .cell:nth-of-type(n+2):before,
+		input[type="checkbox"]:checked ~ .cell:nth-of-type(n+2):before {
+			content: attr(data-label);
+
+			display: inline-block;
+			width: 60px;
+			background: #999;
+			border-radius: 10px;
+			height: 20px;
+			margin-right: 10px;
+			font-size: 12px;
+			line-height: 20px;
+			text-align: center;
+			color: white;
+
+		}
+
+		input[type="radio"]:checked ~ .primary,
+		input[type="checkbox"]:checked ~ .primary  {
+			border-bottom: 2px solid #999;
+		}
+
+		input[type="radio"]:checked ~ .primary:after,
+		input[type="checkbox"]:checked ~ .primary:after {
+	 		position: absolute;
+			right:18px;
+			top:22px;
+			border-right: 10px solid transparent;
+			border-left: 10px solid transparent; 
+			border-top:10px solid #ccc;
+			z-index: 2;
+		}
+	}
+</style>
+</head>
+
+
+<body>
+    <div class="caption">Biodata Diri</div>
+    <div id="table">
+        <div class="header-row row">
+            <span class="cell primary">NIK</span>
+            <span class="cell">Nama</span>
+            <span class="cell">Tempat/Tgl Lahir</span>
+            <span class="cell">Jenis Kelamin</span>
+            <span class="cell">Alamat</span>
+            <span class="cell">RT/RW</span>
+            <span class="cell">Kel/Desa</span>
+            <span class="cell">Kecamatan</span>
+            <span class="cell">Agama</span>
+            <span class="cell">Status</span>
+            <span class="cell">Pekerjaan</span>
+            <span class="cell">Kewarganegaraan</span>
+            <span class="cell">Berlaku Hingga</span>
+        </div>
+        <div class="row">
+            <input type="radio" name="expand">
+            <span class="cell primary" data-label="Nik">64771052403020005</span>
+            <span class="cell" data-label="Nama">Muhamad Hamdan Zulfa</span>
+            <span class="cell" data-label="Tempat/Tgl Lahir">Balikpapan, 24-03-2002</span>
+            <span class="cell" data-label="Jenis Kelamin">Laki-Laki</span>
+            <span class="cell" data-label="Alamat"><a href="">Mawija</a></span>
+            <span class="cell" data-label="RT/RW"><a href="">053/000</a></span>
+            <span class="cell" data-label="Kel/Desa"><a href="">Sumber Rejo</a></span>
+            <span class="cell" data-label="Kecamatan"><a href="">Balikpapan Tengah</a></span>
+            <span class="cell" data-label="Agama"><a href="">Islam</a></span>
+            <span class="cell" data-label="Status"><a href="">Belum Kawin</a></span>
+            <span class="cell" data-label="Pekerjaan"><a href="">Pelajar</a></span>
+            <span class="cell" data-label="Kewarganegaraan"><a href="">WNI</a></span>
+            <span class="cell" data-label="Berlaku Hingga"><a href="">Seumur Hidup</a></span>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
