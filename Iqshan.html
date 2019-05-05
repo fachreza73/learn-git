@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -39,6 +42,49 @@
             <td>SeumurHidup</td>
         </tr>
     </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Kalkulator Dengan Jquery</h1>
+                <div class="form-group">
+                    <label for="">Angka 1</label>
+                    <input type="text" class="form-control" id="angka1">
+                </div>
+                <div class="form-group">
+                    <label for="">Angka 2</label>
+                    <input type="text" class="form-control" id="angka2">
+                </div>
+                <div class="form-group">
+                    <label for="">Hasil</label>
+                    <input disabled type="text" class="form-control" id="hasil">
+                </div>
+                <button id="hitung" class="btn btn-primary">Hitung</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#hitung").click(function () {
+                // Ambil Nilai Input
+                var angka1 = $("#angka1").val();
+                var angka2 = $("#angka2").val();
+
+                //Hitung
+                var jumlah = parseInt(angka1) + parseInt(angka2);
+
+                //Menampilkan Data
+                $("#hasil").val(jumlah);
+
+                // Verifikasi
+
+                console.log("tombol di klik")
+                console.log("angka1", angka1);
+                console.log("angka2", angka2);
+                console.log("jumlah", jumlah);
+            })
+        });
+    </script>
 </body>
 
 </html>
