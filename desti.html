@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
-
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Calculator Dengan Jquery</h1>
+                <h1>kalkulator</h1>
                 <div class="form-group">
-                    <label for="">Angka 1</label>
+                    <label for="angka1">Angka 1</label>
                     <input type="text" class="form-control" id="angka1">
                 </div>
                 <div class="form-group">
-                    <label for="">Angka 2</label>
+                    <label for="angka2">Angka 2</label>
                     <input type="text" class="form-control" id="angka2">
                 </div>
                 <div class="form-group">
@@ -32,28 +28,22 @@
             </div>
         </div>
     </div>
-
-    <script>
+    <script> 
         $(document).ready(function () {
             $("#hitung").click(function () {
-                // Ambil Nilai Input
                 var angka1 = $("#angka1").val();
                 var angka2 = $("#angka2").val();
 
-                // Hitung
                 var jumlah = parseInt(angka1) + parseInt(angka2);
 
-                // Menampilkan Data
                 $("#hasil").val(jumlah);
 
-                // Verifikasi
-                console.log("tombol di klik")
+                console.log("tombol di klik");
                 console.log("angka1", angka1);
                 console.log("angka2", angka2);
                 console.log("jumlah", jumlah);
             })
-        });
+         });
     </script>
 </body>
-
 </html>
