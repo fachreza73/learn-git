@@ -21,6 +21,16 @@
                     <input type="text" class="form-control" id="angka2">
                 </div>
                 <div class="form-group">
+                    <label for="">Operator</label>
+                    <select class="form-control" id="operator">
+                    <option value="" disabled selected>Pilih Operation</option>
+                    <option value="tambah">Tambah</option>
+                    <option value="kurang">Kurang</option>
+                    <option value="kali">Kali</option>
+                    <option value="bagi">Bagi</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="">Hasil</label>
                     <input disabled type="text" class="form-control" id="hasil">
                 </div>
@@ -30,19 +40,68 @@
     </div>
     <script> 
         $(document).ready(function () {
-            $("#hitung").click(function () {
-                var angka1 = $("#angka1").val();
-                var angka2 = $("#angka2").val();
+            // global variabel
+            var angka1 = 0;
+            var angka2 = 0;
+            var operator = "";
 
-                var jumlah = parseInt(angka1) + parseInt(angka2);
+            // fungsi menghitung
+            function hitung() {
+                var hasil = 0;
+                angka1 = parseInt(angka1);
+                angka2 = parseInt(angka2);
 
+                switch (operator){
+                    case 'tambah':
+                        hasil = angka1 + angka2;
+                        break;
+                    case 'kurang':
+                        hasil = angka1 - angka2;
+                        break;
+                    case 'kali':
+                        hasil = angka1 * angka2;
+                        break;
+                    case 'bagi':
+                        hasil = angka1 / angka2;
+                        break;
+                    
+                    default:
+                        hasil = "Operator di isi bosqu";
+                        break;
+
+                }
+                return hasil;
+            }
+            // watch and get operator
+            $("#operator").change(function(){
+                operator = $(this).val();
+            });
+
+            // hitung
+            $("#hitung").click(function(){
+            // ambil nilai input bisa juga di letakan di dlm fungsi hitung
+                angka1 = $("#angka1").val();
+                angka2 = $("#angka2").val();
+                
+                // hitung dan ambil hasil
+                var jumlah = hitung(); 
+
+                // menampilkan data
                 $("#hasil").val(jumlah);
-
-                console.log("tombol di klik");
-                console.log("angka1", angka1);
-                console.log("angka2", angka2);
-                console.log("jumlah", jumlah);
             })
+            // $("#hitung").click(function () {
+            //     var angka1 = $("#angka1").val();
+            //     var angka2 = $("#angka2").val();
+
+            //     var jumlah = parseInt(angka1) + parseInt(angka2);
+
+            //     $("#hasil").val(jumlah);
+
+            //     console.log("tombol di klik");
+            //     console.log("angka1", angka1);
+            //     console.log("angka2", angka2);
+            //     console.log("jumlah", jumlah);
+            // })
          });
     </script>
 </body>
