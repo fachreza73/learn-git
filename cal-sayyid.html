@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+          >Calculator</a
+        >
+      </nav>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">angka1</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="angka1" />
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="">Operator</label>
+        <select name="operator" id="operator" class="form-control">
+            <option value="" disabled selected>Pilih Operator</option>
+            <option value="tambah" id="tambah">Tambah</option>
+            <option value="kurang" id="kurang">Kurang</option>
+            <option value="kali" id="kali">Kali</option>
+            <option value="bagi" id="bagi">Bagi</option>
+        </select>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">angka2</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="angka2" />
+        </div>
+      </div>
+    <div class="form-group">
+        <label for="">Hasil</label>
+        <input type="text" class="form-control" id="hasil">
+    </div>
+    <button id="hitung" class="btn btn-primary">Hitung</button>
+</div>
+</div>
+</div>
+<script>
+$(document).ready(function () {
+// Global variable
+var angka1 = 0;
+var angka2 = 0;
+var operator = "";
+
+function hitung() {
+    var hasil = 0;
+    angka1 = parseInt(angka1);
+    angka2 = parseInt(angka2);
+    switch (operator) {
+        case 'tambah':
+            hasil = angka1 + angka2;
+            break;
+        case 'kurang':
+            hasil = angka1 - angka2;
+            break;
+        case 'kali':
+            hasil = angka1 * angka2;
+            break;
+        case 'bagi':
+            hasil = angka1 / angka2;
+            break;
+        default:
+            hasil = "pilih operator";
+            break;
+    }
+    return hasil;
+}
+// watch and get operator
+$("#operator").change(function () {
+    operator = $(this).val();
+});
+
+// Hitung
+$("#hitung").click(function () {
+    //ambil nilai input
+    angka1 = $("#angka1").val();
+    angka2 = $("#angka2").val();
+    // Hitung dan ambil hasil
+    var jumlah = hitung();
+    //menampilkan Data
+    $("#hasil").val(jumlah);
+    
+});
+});
+</script>
+  </body>
+</html>
