@@ -23,6 +23,16 @@
                     <input type="text" class="form-control" id="angka2">
                 </div>
                 <div class="form-group">
+                    <label for="">Operator</label>
+                    <select name="operator" id="operator" class="form-control">
+                        <option value="" disabled selected>Pilih Operator</option>
+                        <option value="tambah">Tambah</option>
+                        <option value="kurang">Kurang</option>
+                        <option value="kali">Kali</option>
+                        <option value="bagi">Bagi</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="">Hasil</label>
                     <input type="text" class="form-control" id="hasil">
                 </div>
@@ -32,22 +42,61 @@
     </div>
     <script>
         $(document).ready(function () {
-            $("#hitung").click(function () {
-                //Ambil Nilai Input
-                var angka1 = $("#angka1").val();
-                var angka2 = $("#angka2").val();
+            // Global variabel
+            var angka1 = 0;
+            var angka2 = 0;
+            var operator = "";
 
-                // Hitung
-                var jumlah = parseInt(angka1) + parseInt(angka2);
+            //Fungsi Menghitung
+            function hitung() {
+                var hasil = 0;
+                angka1 = parseInt(angka1);
+                angka2 = parseInt(angka2);
+
+                switch (operator) {
+                    case 'tambah':
+                        hasil = angka1 + angka2;
+                        break;
+                    case 'kurang':
+                        hasil = angka1 - angka2;
+                        break;
+                    case 'kali':
+                        hasil = angka1 * angka2;
+                        break;
+                    case 'bagi':
+                        hasil = angka1 / angka2;
+                        break;
+
+                    default:
+                        hasil = "Operator DIISI Bosque !";
+                        break;
+                }
+
+                return hasil;
+            }
+
+            // watch and get operator
+            $("#operator").change(function () {
+                operator = $(this).val();
+            });
+            
+            // Hitung
+            $("#hitung").click(function () {
+                //Ambil Nilai Input, bisa juga di letakkan di dalam fungsi hitung()
+                angka1 = $("#angka1").val();
+                angka2 = $("#angka2").val();
+
+                // Hitung dan ambil hasil
+                var jumlah = hitung();
 
                 //Menampilkan Data
                 $("#hasil").val(jumlah);
 
                 // Verifikasi
-                console.log("tombol di klik")
-                console.log("angka1", angka1);
-                console.log("angka2", angka2);
-                console.log("jumlah", jumlah);
+                //console.log("tombol di klik")
+                //console.log("angka1", angka1);
+                //console.log("angka2", angka2);
+                //console.log("jumlah", jumlah);
             });
         });
     </script>
