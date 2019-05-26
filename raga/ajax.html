@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Raga</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button id="btn-get-data" class="btn btn-primary"> Get Data</button>
+                <br><br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Title</th>
+                            <th>Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-to-do"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Trigger untuk get data
+            $("#btn-get-data").on('click', function () {
+                console.log("tombol get data di klik");
+                getData();
+            })
+
+            // Get Data
+            function getData() {
+                console.log("fungsi get data di panggil");
+
+                var endpoint = "https://jsonplaceholder.typicode.com/todos/";
+                $.get(endpoint, function (data, status) {
+                    console.log("data", data);
+                    console.log("status", status);
+                    if (status === 'success') {
+                        appendTable(data);
+                    }
+                })
+            }
+
+            // Masukan ke data ke dalam table
+            function appendTable(datas) {
+                var dat = [];
+                data = datas;
+                data.forEach(todo => {
+                    $("#table-to-do")
+                        .append("<tr><td>" + todo.userId + "</td><td>" + todo.title + "</td><td>" + todo
+                            .completed + "</td></tr>")
+                });
+            }
+
+        });
+    </script>
+</body>
+
+</html>
